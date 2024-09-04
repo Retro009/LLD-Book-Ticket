@@ -33,9 +33,9 @@ public class TicketServiceImpl implements TicketService{
         if(showSeats.isEmpty())
             throw new SeatUnavailableException("No Seat is Selected");
         Show show = showSeats.get(0).getShow();
-        for(ShowSeat showSeat:showSeats)
-            if(!showSeat.getShow().equals(show))
-                throw new InvalidShowSeatException("Invalid ShowSeat id");
+        for(int showSeatId:showSeatIds){
+            showSeats.stream().filter(showSeat -> showSeat.getId()==showSeatId && showSeat.getShow().equals(show)).findFirst().orElseThrow(()-> new InvalidShowSeatException("Invalid ShowSeat id"));
+        }
 
         List<ShowSeat> availableShowSeats = new ArrayList<>();
         List<Integer> unavailableSeatIds = new ArrayList<>();
