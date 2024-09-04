@@ -1,6 +1,11 @@
 package com.example.bmsbookticket.repositories;
 
 
-public interface TicketRepository {
+import com.example.bmsbookticket.models.Ticket;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TicketRepository extends JpaRepository<Ticket, Integer> {
 
 }
