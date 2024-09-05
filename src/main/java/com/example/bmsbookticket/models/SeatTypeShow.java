@@ -8,7 +8,6 @@ import lombok.Data;
 public class SeatTypeShow extends BaseModel{
     @ManyToOne
     private Show show;
-    @ElementCollection
     @Enumerated(EnumType.ORDINAL)
     private SeatType seatType;
     private double price;
